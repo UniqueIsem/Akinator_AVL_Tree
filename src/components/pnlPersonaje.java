@@ -1,7 +1,10 @@
 package components;
 
-public class pnlPersonaje extends javax.swing.JPanel {
+import back.ArbolAVL;
 
+public class pnlPersonaje extends javax.swing.JPanel {
+    ArbolAVL tree;
+    
     public pnlPersonaje() {
         initComponents();
     }

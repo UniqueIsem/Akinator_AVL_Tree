@@ -33,18 +33,9 @@ public class VentanaAkinator extends javax.swing.JFrame {
         n++;
         //Se muestra el pnlPregunta con los datos ingresados
         pnlContenedor.add(pnlPreg);
-        pnlPreg.setPregunta(primerCaracteristica);
+        pnlPreg.setPreguntaInicial(primerCaracteristica);
     }
     
-    public String setLabelPregunta(){
-        String c = "¿tiene ";
-        return c + tree.obtenerRaiz().toString() +"?";
-    }
-    
-    public String setLabelPersonaje(){
-        String p = "¿es ";
-        return p + tree.buscar(1).toString() +"?";
-    }
     
     /*public void suposicionPersonaje(){
         int res;
@@ -102,8 +93,6 @@ public class VentanaAkinator extends javax.swing.JFrame {
         pnlContenedor.setBackground(new java.awt.Color(51, 51, 51));
         pnlContenedor.setLayout(new java.awt.CardLayout());
         pnlBackgorund.add(pnlContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 390, 160));
-
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.png"))); // NOI18N
         pnlBackgorund.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

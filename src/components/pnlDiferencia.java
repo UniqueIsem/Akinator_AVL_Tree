@@ -1,7 +1,9 @@
 package components;
 
-public class pnlDiferencia extends javax.swing.JPanel {
+import back.ArbolAVL;
 
+public class pnlDiferencia extends javax.swing.JPanel {
+    ArbolAVL tree;
     public pnlDiferencia() {
         initComponents();
     }

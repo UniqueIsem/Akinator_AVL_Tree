@@ -1,9 +1,17 @@
 package components;
 
-public class pnlPregunta extends javax.swing.JPanel {
+import back.ArbolAVL;
+import javax.swing.JOptionPane;
 
+public class pnlPregunta extends javax.swing.JPanel {
+    ArbolAVL tree;
+    
     public pnlPregunta() {
         initComponents();
+    }
+    
+    public pnlPregunta(ArbolAVL tree){
+        this.tree = tree;
     }
 
     @SuppressWarnings("unchecked")
@@ -100,26 +108,38 @@ public class pnlPregunta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-        /*tree.detectarIzq();
-        if (tree.detectarIzq() == null) {
-            setLabelPersonaje();
-        }*/
-        //suposicionPersonaje();
-        //n++;
-        //tree.insertar(n, personaje, pregunta);
+        tree.detectarIzq();
+        if (tree.detectarIzq() != null) {//no ha llegado al final del arbol
+            //insertar caracteristica del personaje en el lblPregunta
+            //tree.insertar(n, personaje, pregunta);
+            //n++;
+        }else{//llegó al final del arbol y adivina el personaje
+            //suposicionPersonaje(); 
+        }
     }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
-        /*tree.detectarDer();
-        if (tree.detectarDer() == null) {
-            setLabelPersonaje();
-        }*/
-        //suposicionPersonaje();
+        tree.detectarDer();
+        if (tree.detectarDer() != null) {//no ha llegado al final del arbol
+            //insertar caracteristica del personaje en el lblPregunta
+        }else{//llegó al final del arbol y adivina el personaje
+            suposicionPersonaje();
+        }
     }//GEN-LAST:event_btnSiActionPerformed
 
-    public void setPregunta(String p){
+    public void setPreguntaInicial(String p){
         String pregunta = "¿" +p + "?";
         lblPregunta.setText(p);
+    }
+    
+    public void suposicionPersonaje(){
+        /*int res;
+        res = JOptionPane.showConfirmDialog(this, "¿tu primerPersonaje es " + +"?", "Suposicion Personaje", JOptionPane.YES_NO_OPTION);
+        if (res == JOptionPane.YES_OPTION) {
+            ganoAkinator();
+        } else if (res == JOptionPane.NO_OPTION){
+            abrirCardPersonaje();
+        }*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
