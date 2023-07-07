@@ -1,9 +1,16 @@
 package front;
 import back.ArbolAVL;
+import components.pnlPregunta;
+import components.pnlPersonaje;
+import components.pnlDiferencia;
 import javax.swing.JOptionPane;
 
 public class VentanaAkinator extends javax.swing.JFrame {
     ArbolAVL tree = new ArbolAVL();
+    pnlPregunta pnlPreg= new pnlPregunta();
+    pnlPersonaje pnlPers = new pnlPersonaje();
+    pnlDiferencia pnlDif = new pnlDiferencia();
+    
     String primerPersonaje, primerCaracteristica;
     int n = 1;
     
@@ -15,27 +22,18 @@ public class VentanaAkinator extends javax.swing.JFrame {
     }
     
     public void inicio(){ //el usuario crea un primerPersonaje por defecto para que la memoria no esté vacia
-        primerPersonaje = JOptionPane.showInputDialog("¿Quien es tu personaje?");
-        primerCaracteristica = JOptionPane.showInputDialog("¿Qué caracteristica tiene tu personaje?");
+        do{
+            primerPersonaje = JOptionPane.showInputDialog("¿Quién es tu personaje?");
+        } while (primerPersonaje == null || primerPersonaje.isEmpty());
+        do{
+            primerCaracteristica = JOptionPane.showInputDialog("¿Qué caracteristica tiene tu personaje?");
+        } while (primerCaracteristica == null || primerCaracteristica.isEmpty());
         
-        if (primerPersonaje == null || primerPersonaje.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese su personaje por favor.");
-        } else {
-            if (primerCaracteristica == null || primerCaracteristica.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese su pregunta por favor.");
-            }
-            tree.insertar(n, primerPersonaje, primerCaracteristica);
-            lblPregunta.setText(setLabelPregunta());
-            n++;
-        }
-        /*primerPersonaje = JOptionPane.showInputDialog("Ingrese un primerPersonaje opuesto a la primerCaracteristica del suyo:");
-        if (primerPersonaje == null || primerPersonaje.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el otro primerPersonaje por favor.");
-        } else  {
-            n++;
-            tree.insertar(n, primerPersonaje);
-        }*/
-        
+        tree.insertar(n, primerPersonaje, primerCaracteristica);
+        n++;
+        //Se muestra el pnlPregunta con los datos ingresados
+        pnlContenedor.add(pnlPreg);
+        pnlPreg.setPregunta(primerCaracteristica);
     }
     
     public String setLabelPregunta(){
@@ -69,21 +67,21 @@ public class VentanaAkinator extends javax.swing.JFrame {
     
     public void abrirCardPregunta(){
         pnlContenedor.removeAll();
-        pnlContenedor.add(pnlPregunta);
+        //pnlContenedor.add(pnlContenedorPregunta);
         pnlContenedor.repaint();
         pnlContenedor.revalidate();
     }
     
     public void abrirCardPersonaje(){
         pnlContenedor.removeAll();
-        pnlContenedor.add(pnlPersonaje);
+       //pnlContenedor.add(pnlContenedorPersonaje);
         pnlContenedor.repaint();
         pnlContenedor.revalidate();
     }
     
     public void abrirCardInput(){
         pnlContenedor.removeAll();
-        pnlContenedor.add(pnlInput);
+        //pnlContenedor.add(pnlContenedorDiferencia);
         pnlContenedor.repaint();
         pnlContenedor.revalidate();
     }
@@ -94,7 +92,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
 
         pnlBackgorund = new javax.swing.JPanel();
         pnlContenedor = new javax.swing.JPanel();
-        lblImage = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -105,8 +103,8 @@ public class VentanaAkinator extends javax.swing.JFrame {
         pnlContenedor.setLayout(new java.awt.CardLayout());
         pnlBackgorund.add(pnlContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 390, 160));
 
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.png"))); // NOI18N
-        pnlBackgorund.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 370));
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo.png"))); // NOI18N
+        pnlBackgorund.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,7 +155,7 @@ public class VentanaAkinator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblImage;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JPanel pnlBackgorund;
     private javax.swing.JPanel pnlContenedor;
     // End of variables declaration//GEN-END:variables

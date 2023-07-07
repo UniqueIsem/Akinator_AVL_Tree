@@ -100,23 +100,27 @@ public class pnlPregunta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-        tree.detectarIzq();
+        /*tree.detectarIzq();
         if (tree.detectarIzq() == null) {
             setLabelPersonaje();
-        }
+        }*/
         //suposicionPersonaje();
         //n++;
         //tree.insertar(n, personaje, pregunta);
     }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
-        tree.detectarDer();
+        /*tree.detectarDer();
         if (tree.detectarDer() == null) {
             setLabelPersonaje();
-        }
+        }*/
         //suposicionPersonaje();
     }//GEN-LAST:event_btnSiActionPerformed
 
+    public void setPregunta(String p){
+        String pregunta = "¿" +p + "?";
+        lblPregunta.setText(p);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNo;
